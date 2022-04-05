@@ -9,20 +9,20 @@ import javax.annotation.Resource;
 
 @Service
 public class StSqlExeBizTotalServiceImpl implements IStSqlExeBizTotalService {
-    private final static Integer TABLE_ID = 1;
+  private final static Integer TABLE_ID = 1;
 
-    @Resource
-    private StSqlExeBizTotalMapper sqlExeBizTotalMapper;
+  @Resource
+  private StSqlExeBizTotalMapper sqlExeBizTotalMapper;
 
-    @Override
-    public void update(StSqlExeBizTotal bizTotal) {
-        StSqlExeBizTotal stSqlExeBizTotal = sqlExeBizTotalMapper.selectByPrimaryKey(TABLE_ID);
+  @Override
+  public void update(StSqlExeBizTotal bizTotal) {
+    StSqlExeBizTotal stSqlExeBizTotal = sqlExeBizTotalMapper.selectByPrimaryKey(TABLE_ID);
 
-        if (null == stSqlExeBizTotal || stSqlExeBizTotal.getId() == null) {
-            sqlExeBizTotalMapper.insertSelective(bizTotal);
-        } else {
-            bizTotal.setId(TABLE_ID);
-            sqlExeBizTotalMapper.updateAddStatisticsCount(bizTotal);
-        }
+    if (null == stSqlExeBizTotal || stSqlExeBizTotal.getId() == null) {
+      sqlExeBizTotalMapper.insertSelective(bizTotal);
+    } else {
+      bizTotal.setId(TABLE_ID);
+      sqlExeBizTotalMapper.updateAddStatisticsCount(bizTotal);
     }
+  }
 }

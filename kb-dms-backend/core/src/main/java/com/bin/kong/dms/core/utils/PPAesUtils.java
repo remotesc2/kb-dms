@@ -16,7 +16,7 @@ public class PPAesUtils {
 
     private static final String KEY_AES = "AES";
 
-    private static final String DEFALUT_CHARSET = "UTF-8";
+    private static final String DEFAULT_CHARSET = "UTF-8";
 
     /**
      * AES加密
@@ -57,7 +57,7 @@ public class PPAesUtils {
             byte[] content;
             //true 加密内容 false 解密内容
             if (encrypt) {
-                content = data.getBytes(DEFALUT_CHARSET);
+                content = data.getBytes(DEFAULT_CHARSET);
             } else {
                 content = parseHexStr2Byte(data);
             }
@@ -83,7 +83,7 @@ public class PPAesUtils {
                 //将二进制转换成16进制
                 return parseByte2HexStr(result);
             } else {
-                return new String(result, DEFALUT_CHARSET);
+                return new String(result, DEFAULT_CHARSET);
             }
         } catch (Exception e) {
             log.error("AES 密文处理异常", e);
